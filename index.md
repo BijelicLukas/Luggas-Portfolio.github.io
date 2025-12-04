@@ -12,7 +12,7 @@ This means my portfolio is still growing. I'm are currently doing a Game Engine 
 
 # Projects
 
-## [A.P.E - Automated Productivity Evaluation]()
+## [A.P.E - Automated Productivity Evaluation](./APE.md)
 A 2D sorting game developed in **C# with SFML**.  
 This was my first larger game project, built around categorizing four different card types: Currency, Names, Crypto, and Humans.  
 I focused on the architecture, data handling and drag-and-drop system.  
@@ -20,7 +20,7 @@ I focused on the architecture, data handling and drag-and-drop system.
 
 ---
 
-## [Last Response]()
+## [Last Response](./Last_Response.md)
 A **solo GameJam** project made in Unity.  
 Theme: *Lost Signal*  
 The game revolves around monitoring 9 rooms by calling the people inside. If they don't answer correclty (or something answers *for* them), you must take action and clear the room.  
@@ -29,7 +29,7 @@ I used this project to experiment with systems-driven design and enemy behavior.
 
 ---
 
-## [Duck You]()
+## [Duck You](./DuckYou.md)
 A **GameJam project** made during one of my first weeks in school.  
 Theme: *Tension*  
 Our idea was a 4-player couch-co-op "subway surfer".  
@@ -38,7 +38,7 @@ I implemented controller support for four players simultaneously - something com
 
 ---
 
-## [Spider MOMmy]()
+## [Spider MOMmy](./SpiderMommy.md)
 A **Gamejam project** developed with a small first-semester team.  
 Theme: *No strings attached*  
 The gamplay is split between two players:  
