@@ -53,6 +53,17 @@ A.P.E is a 2D sorting game built in C# with SFML, created as my first full game 
 
 - Kept development history structured through regular Git commits with descriptive messages, making it easy to track changes and future improvements.  
 
+---
+
+# Screenshots
+![Currency Gameplay](./Assets/APE_Currency.png)
+*Basic gameplay loop with static containers and simple card sorting. Shows the core interaction and timing pressure.*  
+
+![Crypto Gameplay](./Assets/APE_Crypto.png)
+*Advanced card type with dynamic containers and data-driven evaluation using coin value factors defined in the deck file.*  
+
+![Card Architecture Diagram](./Assets/APE_CardStructure.png)
+*Simplified architecture showing the layered card system (base class -> mode-specific classes -> concrete card types).*
 
 ---
 
