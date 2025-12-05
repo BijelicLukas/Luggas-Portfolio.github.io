@@ -23,7 +23,7 @@ A.P.E is a 2D sorting game built in C# with SFML, created as my first full game 
 - Implemented a central state controller (`TableManager`) to manage the full game flow, including menu, dialogue, gameplay and lose states, as well as timer, mistake tracking and music transitions.
 - Separated gameplay logic into two main game modes (**Category** and **List**), allowing different evaluation rules while reusing the same core systems for input, feedback and flow control. 
 - Designed a layered card architecture with a shared abstract `Card` base, two intermediate types (`CategoryCard`, `ListCard`) and four concrete card types (`Currency`, `Name`, `Crypto`, `Human`), keeping behavior consistent while still allowing specialized logic. 
-- Built a `DeckManager` that reads custom deck files, parses them depending on card type, creates and shuffles decks, and evaluates player actions on each placement instead of at the very end of a round – based on feedback from a code review.
+- Built a `DeckManager` that reads custom deck files, parses them depending on card type, creates and shuffles decks, and evaluates player actions on each placement instead of at the very end of a round – based on feedback from a code review. *(More context in the [Lessons Learned](#lessons-learned) section.)*
 - Created a flexible deck file format (JSON-like key–value structure) that allows designers to define duration, card types, crypto definitions and human data without touching code.  
 - Implemented a unified drag-and-drop system using an `IDraggable` interface and a dedicated `DragManager`, so all card types interact with containers in the same way. 
 - Developed a dynamic container layout system that automatically arranges containers based on their number (single row, multi-row) to keep the UI readable across different level configurations.
@@ -37,4 +37,12 @@ A.P.E is a 2D sorting game built in C# with SFML, created as my first full game 
 
 ---
 
+# Lessons Learned
+- Initially, I used a separate “correct deck” structure to evaluate list-based levels. After a code review, I refactored this into an incremental evaluation on each placement, which reduced duplicated state and simplified the overall logic.
+- Planning only gets you so far — at some point, implementation needs to take over. I learned how to find a healthy balance between design, architecture thinking and simply writing code.
+- Large milestones can kill momentum. Breaking tasks into smaller, achievable steps kept motivation and visible progress steady throughout the project.
+- Clear class responsibilities and early sketches prevent late-stage refactoring and unnecessary complexity.
+- Consistent project documentation (structure diagrams, behavior notes, deck format) made debugging and feature expansion much easier.
+- Regular Git commits with meaningful messages created a reliable development history and made iteration far simpler.
+- Managing workload from university and a multi-week project taught me how to prioritize realistically and maintain progress even under pressure.
 
