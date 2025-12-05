@@ -67,6 +67,77 @@ A.P.E is a 2D sorting game built in C# with SFML, created as my first full game 
 
 ---
 
+# Code Snippets
+
+## IDraggable
+```C#
+public interface IDragable
+{
+    void StartDrag(Vector2f mousePosition);
+    void Drag(Vector2f mousePosition);
+    FloatRect GetBounds();
+}
+```
+*Interface used to unify drag-and-drop behavior across all card types.*  
+
+## Evaluation of cards
+```C#
+public static bool Evaluate(List<Card> deck, Card currentCard, Type mode)
+{
+    switch(mode)
+    {
+        case Type.Currency:
+        case Type.Human:
+            return IsCorrect((CategoryCard)currentCard);
+
+        case Type.Name:
+        case Type.Crypto:
+            return IsCorrect(deck, (ListCard)currentCard);
+
+        default:
+            throw new ApplicationException("Unsupported game mode.");
+    }
+}
+```
+*Simplified evaluation helper deciding between category- and list-based rules depending on the current game mode.*  
+
+## Deck Parsing
+```C#
+public void ReadLevelFile(string filePath)
+{
+
+    levelFile = new StreamReader(filePath);
+    while (!levelFile.EndOfStream)
+    {
+        fileLine = levelFile.ReadLine();
+        keyValueSplit = fileLine.Split(':', StringSplitOptions.TrimEntries);
+        switch (keyValueSplit[0].ToLower())
+        {
+            case "duration":
+                TableManager.Instance.Duration = int.Parse(keyValueSplit[1]);
+                break;
+
+            case "type":
+                TableManager.Instance.CurrentType = Enum.Parse<Type>(keyValueSplit[1]);
+                break;
+
+            case "cards":
+                InitiateCreateCards(levelFile);
+                break;
+
+            case "cryptos":
+                CryptoManager.Instance.LoadInfoIntoList(levelFile);
+                break;
+
+            // ...
+        }
+    }
+}
+```
+*Core part of the level file reader: mapping key-value lines to game state (timer, mode, cards and crypto data).*
+
+---
+
 # Lessons Learned
 - Initially, I used a separate “correct deck” structure to evaluate list-based levels. After a code review, I refactored this into an incremental evaluation on each placement, which reduced duplicated state and simplified the overall logic.  
 
