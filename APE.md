@@ -70,7 +70,7 @@ A.P.E is a 2D sorting game built in C# with SFML, created as my first full game 
 # Code Snippets
 
 ## IDraggable
-```C#
+```Csharp
 public interface IDragable
 {
     void StartDrag(Vector2f mousePosition);
@@ -81,7 +81,7 @@ public interface IDragable
 *Interface used to unify drag-and-drop behavior across all card types.*  
 
 ## Evaluation of cards
-```C#
+```Csharp
 public static bool Evaluate(List<Card> deck, Card currentCard, Type mode)
 {
     switch(mode)
@@ -102,10 +102,9 @@ public static bool Evaluate(List<Card> deck, Card currentCard, Type mode)
 *Simplified evaluation helper deciding between category- and list-based rules depending on the current game mode.*  
 
 ## Deck Parsing
-```C#
+```Csharp
 public void ReadLevelFile(string filePath)
 {
-
     levelFile = new StreamReader(filePath);
     while (!levelFile.EndOfStream)
     {
