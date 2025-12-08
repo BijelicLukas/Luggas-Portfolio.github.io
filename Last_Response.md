@@ -20,7 +20,7 @@ I focused on the enemy behavior logic, the room and state management, and the UI
 
 ---
 
-## Solutions
+# Solutions
 
 - Used a `RoomManager` with a simple `RoomState` enum and event to broadcast which of the nine rooms is currently being called, so individual room scripts could react without tightly coupling everything together.  
 
@@ -89,3 +89,13 @@ void OnRoomChange(RoomManager.RoomState activeRoom)
 }
 ```
 *Per-room behavior reacting to focus changes, scheduling phone responses and altering behavior when rooms are under attack or faked.*  
+
+# Lessons Learned
+
+- Event-based communication made it much easier to coordinate room behavior without tightly coupling individual scripts, especially under GameJam time constraints.  
+
+- Audio as the primary information channel requires very clear rules and strong UI feedback, otherwise players can easily feel overwhelmed or confused.  
+
+- Keeping room logic local and reactive allowed enemy behaviors to reuse the same systems while still feeling distinct.  
+
+- Rapid prototyping during a GameJam often leads to messy code, but identifying the core systems early helped keep the project stable until the end.
