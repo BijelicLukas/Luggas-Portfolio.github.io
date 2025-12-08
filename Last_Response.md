@@ -41,3 +41,51 @@ I focused on the enemy behavior logic, the room and state management, and the UI
 *Termination mode with changed button states*
 
 ---
+
+# Code Snippets
+
+## RoomManager
+```Csharp
+public class RoomManager : MonoBehaviour
+{
+   public enum RoomState
+    {
+        None,
+        LT, MT, RT,
+        LM, MM, RM,
+        LL, ML, RL
+    }
+
+    //...
+
+    public event Action<RoomState> OnRoomStateChanged;
+    
+
+    public void SetRoomState(RoomState newState)
+    {
+        OnRoomStateChanged?.Invoke(currentState);
+    }
+}
+```
+*Broadcast-based room focus system using an enum and event so individual room scripts can react without tight coupling.*  
+
+## RoomLogic - OnRoomChange
+```Csharp
+void OnRoomChange(RoomManager.RoomState activeRoom)
+{
+    if (activeRoom != roomId)
+        return;
+
+    lastTime = Time.time;
+    allowedToSpeak = true;
+    delay = Random.Range(3f, 7f);
+
+    if (roomInfo.AttackedRooms[roomId])
+    {
+        allowedToSpeak = false;
+        if (!FakersScript.active)
+            roomInfo.RoomRespondsReqeust = false;
+    }
+}
+```
+*Per-room behavior reacting to focus changes, scheduling phone responses and altering behavior when rooms are under attack or faked.*  
