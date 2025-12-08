@@ -8,7 +8,7 @@ I focused on the enemy behavior logic, the room and state management, and the UI
 
 # Challenges
 
-- Designing a room system for nine rooms that could track states such as idle, threatened and terminated, while still being easy to control from code.  
+- Designing a room system for nine rooms that could track different room conditions (normal operation, active threats and terminated rooms) while still being easy to control from code.  
 
 - Implementing multiple enemy types with distinct behavior patterns (periodic threats, constant noise, fake responses) that all interact with the same room system.  
 
@@ -22,14 +22,22 @@ I focused on the enemy behavior logic, the room and state management, and the UI
 
 ## Solutions
 
-- Introduced a `RoomManager` with separate components for room data and logic, so each room could track its current state and respond consistently to player input and enemy events.  
+- Used a `RoomManager` with a simple `RoomState` enum and event to broadcast which of the nine rooms is currently being called, so individual room scripts could react without tightly coupling everything together.  
 
-- Created individual enemy scripts plus a simple spawn system that assigns enemies to free rooms, rerolling if a room is already occupied to avoid overlapping threats.  
+- Implemented a `RoomLogic` script for each room that listens to room state changes, schedules when its phone should ring, and controls audio playback and a low-pass filter to create the “telephone” effect.  
 
-- Implemented different enemy behaviors: periodic sound intervals for basic threats, a continuous chainsaw sound that masks other audio, and a “faker” that modifies pitch and hijacks the next phone call to create false feedback.  
+- Used a `RoomInfos` ScriptableObject as a central data store for all room positions and attack states, so enemies and room logic could share consistent information without tightly coupling everything together.  
 
-- Built the UI around nine room buttons and a dedicated termination mode, where room buttons change color/state when a room is shut down, giving immediate visual feedback on player actions.  
+- Exposed a `RoomRespondsRequest` flag with an event, allowing UI and logic to react whenever a room stopped responding normally (for example when under attack or affected by the “faker” enemy).
 
-- Centralized audio control in an `AudioManager`, allowing each room and enemy type to trigger sounds, adjust pitch and timing, and layer feedback without hardcoding logic into individual UI elements.
+- Structured the UI around nine room buttons wired to room scripts, plus a termination mode that visually changes button states when a room is shut down, giving clear feedback under time pressure.
+
+---
+# Screenshots
+![Calling a room](./Assets/LastResponse_Calling.png)
+*Normal gameplay state: calling rooms and reading responses through audio and UI feedback.*  
+
+![Termination mode](./Assets/LastResponse_Terminating.png)
+*Termination mode with changed button states*
 
 ---
