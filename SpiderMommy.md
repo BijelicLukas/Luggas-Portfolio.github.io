@@ -28,3 +28,24 @@ I acted as the main game designer and technical coordinator, defining the core m
 
 ---
 
+# Screenshot
+![Core Gameplay](./Assets/SpiderMommy-ChasedByEnemypng.png)
+*Asymmetric split-screen gameplay showing the adventurer’s first-person view and the spider’s top-down support perspective.*
+
+![Ground Web](./Assets/SpiderMommy-walkingOnString.png)
+*Spider-created web bridge enabling traversal, highlighting the support-focused cooperation between both players.*
+
+---
+
+# Lessons Learned
+
+- Clear communication of ideas is crucial when working with mixed-experience teams; abstract mechanics became much easier to implement once they were explained using simple sketches and pen-and-paper diagrams.  
+
+- Learning when to simplify or defer architectural ideas under heavy time pressure is essential to keep a GameJam project moving forward.  
+
+- Raycasting proved to be a versatile and reliable tool, used across multiple systems such as spider web placement and player interaction detection.  
+
+- Using simple telegraphed attacks with separate detection and damage triggers made enemy behavior feel fair and readable without requiring complex AI.  
+
+- Working with NavMesh for the first time highlighted the importance of robust navigation systems, even for otherwise simple enemy behaviors.
+
