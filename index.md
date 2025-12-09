@@ -44,5 +44,5 @@ Theme: *No strings attached*
 The gamplay is split between two players:  
 a first-person adventurer and a top-down spider protecting them.  
 My role focused on enemy behaviour, but I also supported team members with general Unity systems and logic.  
-*Itch.io Page:* [Spider MOMmy Game Page](https://lugas-games.itch.io)
+*Itch.io Page:* [Spider MOMmy Game Page](https://prehnit.itch.io/spider-mommy)
 
