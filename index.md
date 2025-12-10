@@ -8,7 +8,7 @@ Each project page includes technical notes, design decisions, problems I ran int
 
 # Disclaimer!
 I am currently in my third semester, and our GameDev-focused courses only began a few months ago.  
-This means my portfolio is still growing. I'm are currently doing a Game Engine in C++ with SFML and in the upcoming semester I will work more with Unity and Unreal - and this page will grow accordingly.
+This means my portfolio is still growing. I'm currently doing a Game Engine in C++ with SFML and in the upcoming semester I will work more with Unity and Unreal - and this page will grow accordingly.
 
 # Projects
 
