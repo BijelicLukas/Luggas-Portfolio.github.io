@@ -91,9 +91,9 @@ public class HunterInvestigation : State
 
 # Lessons Learned
 
-- [Your own point, e.g. what was easier or harder with a state machine than with if-chains.]  
+<!-- - [Your own point, e.g. what was easier or harder with a state machine than with if-chains.]  
 
-- [Something about debugging transitions or tuning values like "seeing the player long enough".]  
+- [Something about debugging transitions or tuning values like "seeing the player long enough".]   -->
 
 - Working on AI in a team meant that a teammate later built on my code, which made clear structure and readable transitions important.
 
