@@ -8,6 +8,8 @@ This site shows how I work: technical notes, design decisions, problems I ran in
 A two-week Unity team project with two other programmers. I built the enemy AI in the first week.  
 **Systems:** a state-machine-based enemy AI with four states (Patrol, Hunt, Shoot, Investigation) and explicitly declared transitions. Each state follows the same lifecycle (`DoBeforeEntering`, `Act`, `Reason`, `DoBeforeLeaving`).
 
+---
+
 ## [Last Response](./Last_Response.md)
 A solo GameJam project made in **Unity** (theme: *Lost Signal*): 
 monitor nine rooms by phone and decide which ones need to be shut down.  
