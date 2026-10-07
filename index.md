@@ -1,35 +1,29 @@
-# Who am I?
-My name is Lukas Bijelic (also known as *Luggas*), and I am currently studying Game Development at FH Salzburg in Austria.  
-I enjoy solving problems, breaking them apart, rebuilding them, and sometimes overthinking them a bit too much. Luckily, game development is the perfect place for that.
-
-# What is this?
-This website showcases how I work: how I structure my projects, the challenges I encouter, and the solutions I find.  
-Each project page includes technical notes, design decisions, problems I ran into, and what I would do differently today.
-
-# Disclaimer!
-I am currently in my third semester, and our GameDev-focused courses only began a few months ago.  
-This means my portfolio is still growing. I'm currently doing a Game Engine in C++ with SFML and in the upcoming semester I will work more with Unity and Unreal - and this page will grow accordingly.
+# Lukas Bijelic
+Game Development student at FH Salzburg, focused on gameplay systems, architecture and algorithms.  
+This site shows how I work: technical notes, design decisions, problems I ran into, and what I would do differently today.
 
 # Projects
 
-## [A.P.E - Automated Productivity Evaluation](./APE.md)
-A 2D sorting game developed in **C# with SFML**.  
-This was my first larger game project, built around categorizing four different card types: Currency, Names, Crypto, and Humans.  
-I focused on the architecture, data handling and drag-and-drop system.  
-*Itch.io Page:* [A.P.E Game-Page](https://lugas-games.itch.io/ape)
-
----
+## [Possession](Possession.md)
+A two-week Unity team project with two other programmers. I built the enemy AI in the first week.  
+**Systems:** a state-machine-based enemy AI with four states (Patrol, Hunt, Shoot, Investigation) and explicitly declared transitions. Each state follows the same lifecycle (`DoBeforeEntering`, `Act`, `Reason`, `DoBeforeLeaving`).
 
 ## [Last Response](./Last_Response.md)
-A **solo GameJam** project made in Unity.  
-Theme: *Lost Signal*  
-The game revolves around monitoring 9 rooms by calling the people inside. If they don't answer correclty (or something answers *for* them), you must take action and clear the room.  
-I used this project to experiment with systems-driven design and enemy behavior.  
+A solo GameJam project made in **Unity** (theme: *Lost Signal*): 
+monitor nine rooms by phone and decide which ones need to be shut down.  
+**Systems:** an event-based room system that keeps room logic and enemy behaviors decoupled, with a shared ScriptableObject as the single source of truth for room data.   
 *Itch.io Page:* [Last Response Game-Page](https://lugas-games.itch.io/last-response)
 
 ---
 
-## [Duck You](./DuckYou.md)
+## [A.P.E - Automated Productivity Evaluation](./APE.md)
+A 2D sorting game built in **C# with SFML**, my first full game project.  
+**Systems:** a layered card architecture (abstract base class, two game-mode types, four concrete card types), a unified drag-and-drop framework built on an `IDraggable` interface, and data-driven levels defined in custom deck files.  
+*Itch.io Page:* [A.P.E Game-Page](https://lugas-games.itch.io/ape)
+
+---
+
+<!-- ## [Duck You](./DuckYou.md)
 A **GameJam project** made during one of my first weeks in school.  
 Theme: *Tension*  
 Our idea was a 4-player couch-co-op "subway surfer".  
@@ -44,5 +38,5 @@ Theme: *No strings attached*
 The gamplay is split between two players:  
 a first-person adventurer and a top-down spider protecting them.  
 My role focused on enemy behaviour, but I also supported team members with general Unity systems and logic.  
-*Itch.io Page:* [Spider MOMmy Game Page](https://prehnit.itch.io/spider-mommy)
+*Itch.io Page:* [Spider MOMmy Game Page](https://prehnit.itch.io/spider-mommy) -->
 

@@ -2,7 +2,7 @@
 # Last Response
 Last Response is a solo GameJam project made in Unity for the theme **“Lost Signal.”**  
 The player monitors nine rooms through a phone system, listening to ambient sounds and deciding whether each room is safe or needs to be terminated. Different enemy types affect the soundscape in unique ways, from simple threats that emit periodic noises to a chainsaw enemy that drowns out other signals and a “faker” that mimics room responses through pitch changes.  
-I focused on the enemy behavior logic, the room and state management, and the UI that lets the player quickly read room status and trigger termination under time pressure.
+I focused on the enemy behavior logic, the room and state management, and the UI that lets the player quickly read room status and trigger termination under time pressure. The room system is built on event-based communication, so room logic and enemy behaviors stay decoupled.
 
 ---
 
@@ -12,8 +12,6 @@ I focused on the enemy behavior logic, the room and state management, and the UI
 
 - Implementing multiple enemy types with distinct behavior patterns (periodic threats, constant noise, fake responses) that all interact with the same room system.  
 
-- Making sure enemies never occupied the same room at the same time while still feeling random and unpredictable.  
-
 - Building a UI that clearly represented all nine rooms, including a “termination mode” that changed button colors and states to show which rooms were shut down.  
 
 - Creating an audio-driven experience where the player relies on sound direction, timing and pitch changes to read threats without the game becoming unreadable noise.
@@ -22,11 +20,9 @@ I focused on the enemy behavior logic, the room and state management, and the UI
 
 # Solutions
 
-- Used a `RoomManager` with a simple `RoomState` enum and event to broadcast which of the nine rooms is currently being called, so individual room scripts could react without tightly coupling everything together.  
+- Built the room system around a `RoomManager` with a `RoomState` enum and an event that broadcasts which of the nine rooms is currently being called. Room scripts and enemies react to that event and read room positions and attack states from a shared `RoomInfos` ScriptableObject, which acts as a single source of truth. This way, every part of the game stays in sync without depending directly on each other.
 
 - Implemented a `RoomLogic` script for each room that listens to room state changes, schedules when its phone should ring, and controls audio playback and a low-pass filter to create the “telephone” effect.  
-
-- Used a `RoomInfos` ScriptableObject as a central data store for all room positions and attack states, so enemies and room logic could share consistent information without tightly coupling everything together.  
 
 - Exposed a `RoomRespondsRequest` flag with an event, allowing UI and logic to react whenever a room stopped responding normally (for example when under attack or affected by the “faker” enemy).
 
@@ -45,7 +41,7 @@ I focused on the enemy behavior logic, the room and state management, and the UI
 # Code Snippets
 
 ## RoomManager
-```Csharp
+```cs
 public class RoomManager : MonoBehaviour
 {
    public enum RoomState
@@ -63,6 +59,7 @@ public class RoomManager : MonoBehaviour
 
     public void SetRoomState(RoomState newState)
     {
+        currentState = newState;
         OnRoomStateChanged?.Invoke(currentState);
     }
 }
@@ -70,7 +67,7 @@ public class RoomManager : MonoBehaviour
 *Broadcast-based room focus system using an enum and event so individual room scripts can react without tight coupling.*  
 
 ## RoomLogic - OnRoomChange
-```Csharp
+```cs
 void OnRoomChange(RoomManager.RoomState activeRoom)
 {
     if (activeRoom != roomId)
